@@ -30,6 +30,4 @@ else()
     target_link_libraries(OpenGL PRIVATE glfw OpenGL::OpenGL)
 endif()
 
-
-
 # TODO: 如有需要，请添加测试并安装目标。
