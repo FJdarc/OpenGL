@@ -38,6 +38,7 @@ def configure_cmake(build_dir, build_type):
             'cmake',
             '-B', build_dir,
             '-S', '.',
+            '-G', 'MinGW Makefiles',
             f'-DEXECUTABLE_OUTPUT_PATH={exec_path}',
             f'-DLIBRARY_OUTPUT_PATH={lib_path}',
             f'-DCMAKE_BUILD_TYPE={build_type}',

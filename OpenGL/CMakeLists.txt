@@ -15,12 +15,12 @@ target_include_directories(OpenGL PRIVATE
 )
 
 if(WIN32)
-    set(GLFW_LIB64_DIR ${CMAKE_SOURCE_DIR}/Dependencies/GLFW/WIN64/lib-vc2022)
-    set(GLFW_LIB32_DIR ${CMAKE_SOURCE_DIR}/Dependencies/GLFW/WIN32/lib-vc2022)
+    set(GLFW_LIB64_DIR ${CMAKE_SOURCE_DIR}/Dependencies/GLFW/WIN64/lib-mingw-w64)
+    set(GLFW_LIB32_DIR ${CMAKE_SOURCE_DIR}/Dependencies/GLFW/WIN32/lib-mingw-w64)
     if (CMAKE_SIZEOF_VOID_P EQUAL 8)  # 64 位
-        set(GLFW_LIBRARY ${GLFW_LIB64_DIR}/glfw3.lib)
+        set(GLFW_LIBRARY ${GLFW_LIB64_DIR}/libglfw3.a)
     else()  # 32 位
-        set(GLFW_LIBRARY ${GLFW_LIB32_DIR}/glfw3.lib)
+        set(GLFW_LIBRARY ${GLFW_LIB32_DIR}/libglfw3.a)
     endif()
     target_link_libraries(OpenGL PRIVATE ${GLFW_LIBRARY} opengl32)
 else()
