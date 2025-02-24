@@ -1,5 +1,0 @@
-/home/yui/dev/OpenGL/build-debug/CMakeFiles/edit_cache.dir
-/home/yui/dev/OpenGL/build-debug/CMakeFiles/rebuild_cache.dir
-/home/yui/dev/OpenGL/build-debug/OpenGL/CMakeFiles/OpenGL.dir
-/home/yui/dev/OpenGL/build-debug/OpenGL/CMakeFiles/edit_cache.dir
-/home/yui/dev/OpenGL/build-debug/OpenGL/CMakeFiles/rebuild_cache.dir

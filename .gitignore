@@ -1,8 +1,8 @@
 
 .vs/
-.Dependencies/
-.out/
-.build-debug/
-.build-release/
+Dependencies/
+out/
+build-debug/
+build-release/
 
 CMakePresets.json
