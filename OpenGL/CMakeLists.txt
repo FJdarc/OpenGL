@@ -14,14 +14,22 @@ target_include_directories(OpenGL PRIVATE
     ${CMAKE_SOURCE_DIR}/Dependencies/GLFW/include  # GLFW 的头文件目录
 )
 
-set(GLFW_LIB64_DIR ${CMAKE_SOURCE_DIR}/Dependencies/GLFW/WIN64/lib-vc2022)
-set(GLFW_LIB32_DIR ${CMAKE_SOURCE_DIR}/Dependencies/GLFW/WIN64/lib-vc2022)
-if (CMAKE_SIZEOF_VOID_P EQUAL 8)  # 64 位
-    set(GLFW_LIBRARY ${GLFW_LIB64_DIR}/glfw3.lib)
-else()  # 32 位
-    set(GLFW_LIBRARY ${GLFW_LIB32_DIR}/glfw3.lib)
+if(WIN32)
+    set(GLFW_LIB64_DIR ${CMAKE_SOURCE_DIR}/Dependencies/GLFW/WIN64/lib-vc2022)
+    set(GLFW_LIB32_DIR ${CMAKE_SOURCE_DIR}/Dependencies/GLFW/WIN64/lib-vc2022)
+    if (CMAKE_SIZEOF_VOID_P EQUAL 8)  # 64 位
+        set(GLFW_LIBRARY ${GLFW_LIB64_DIR}/glfw3.lib)
+    else()  # 32 位
+        set(GLFW_LIBRARY ${GLFW_LIB32_DIR}/glfw3.lib)
+    endif()
+    target_link_libraries(OpenGL PRIVATE ${GLFW_LIBRARY} opengl32)
+else()
+    set(OpenGL_GL_PREFERENCE GLVND)
+    find_package(glfw3 REQUIRED)
+    find_package(OpenGL REQUIRED)
+    target_link_libraries(OpenGL PRIVATE glfw OpenGL::OpenGL)
 endif()
 
-target_link_libraries(OpenGL PRIVATE ${GLFW_LIBRARY} opengl32)
+
 
 # TODO: 如有需要，请添加测试并安装目标。
