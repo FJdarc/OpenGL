@@ -16,7 +16,7 @@ target_include_directories(OpenGL PRIVATE
 
 if(WIN32)
     set(GLFW_LIB64_DIR ${CMAKE_SOURCE_DIR}/Dependencies/GLFW/WIN64/lib-vc2022)
-    set(GLFW_LIB32_DIR ${CMAKE_SOURCE_DIR}/Dependencies/GLFW/WIN64/lib-vc2022)
+    set(GLFW_LIB32_DIR ${CMAKE_SOURCE_DIR}/Dependencies/GLFW/WIN32/lib-vc2022)
     if (CMAKE_SIZEOF_VOID_P EQUAL 8)  # 64 位
         set(GLFW_LIBRARY ${GLFW_LIB64_DIR}/glfw3.lib)
     else()  # 32 位
