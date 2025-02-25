@@ -34,16 +34,19 @@ def configure_cmake(build_dir, build_type):
     exec_path = os.path.abspath(os.path.join(build_dir, 'bin'))
     lib_path = os.path.abspath(os.path.join(build_dir, 'lib'))
 
-    try:
-        subprocess.run([
+    config = [
             'cmake',
             '-B', build_dir,
             '-S', '.',
-            '-G', 'MinGW Makefiles',
             f'-DEXECUTABLE_OUTPUT_PATH={exec_path}',
             f'-DLIBRARY_OUTPUT_PATH={lib_path}',
             f'-DCMAKE_BUILD_TYPE={build_type}',
-        ], check=True)
+        ]
+    if platform.system() == "Windows":
+        config.append('-G')
+        config.append('MinGW Makefiles')
+    try:
+        subprocess.run(config, check=True)
         print(f"✅ CMake 配置成功 @ {build_dir}")
         return True
     except subprocess.CalledProcessError as e:
