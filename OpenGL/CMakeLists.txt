@@ -10,15 +10,7 @@ if (CMAKE_VERSION VERSION_GREATER 3.12)
 endif()
 
 if(WIN32)
-    set(GLFW_LIB64_DIR ${CMAKE_SOURCE_DIR}/Dependencies/GLFW/WIN64/lib-mingw-w64)
-    set(GLFW_LIB32_DIR ${CMAKE_SOURCE_DIR}/Dependencies/GLFW/WIN32/lib-mingw-w64)
-    if (CMAKE_SIZEOF_VOID_P EQUAL 8)  # 64 位
-        set(GLFW_LIBRARY ${GLFW_LIB64_DIR}/libglfw3.a)
-        target_link_libraries(OpenGL PRIVATE ${GLFW_LIBRARY} opengl32)
-    else()  # 32 位
-        set(GLFW_LIBRARY ${GLFW_LIB32_DIR}/libglfw3.a)
-        target_link_libraries(OpenGL PRIVATE ${GLFW_LIBRARY} opengl32)
-    endif()
+    target_link_libraries(OpenGL PRIVATE glfw opengl32)
 else()
     set(OpenGL_GL_PREFERENCE GLVND)
     find_package(OpenGL REQUIRED)
