@@ -56,12 +56,12 @@ def configure_cmake(arch, build_dir, build_type, lib_type, generator):
             f'-DEXECUTABLE_OUTPUT_PATH={exec_path}',
             f'-DLIBRARY_OUTPUT_PATH={lib_path}',
             f'-DCMAKE_BUILD_TYPE={build_type}',
-            f'-DCMAKE_C_FLAGS={arch}',
-            f'-DCMAKE_CXX_FLAGS={arch}',
         ]
     if lib_type == 'Static':
         config.append('-DBUILD_STAIC_LIBS=ON')
+        config.append('-DBUILD_SHARED_LIBS=OFF')
     else:
+        config.append('-DBUILD_STAIC_LIBS=OFF')
         config.append('-DBUILD_SHARED_LIBS=ON')
         
     try:
