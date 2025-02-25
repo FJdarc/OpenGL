@@ -13,3 +13,4 @@ project ("OpenGL")
 
 # 包含子项目。
 add_subdirectory ("OpenGL")
+add_subdirectory("vendor/glfw")

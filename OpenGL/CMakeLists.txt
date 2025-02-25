@@ -9,11 +9,6 @@ if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET OpenGL PROPERTY CXX_STANDARD 20)
 endif()
 
-target_include_directories(OpenGL PRIVATE
-    ${CMAKE_SOURCE_DIR}
-    ${CMAKE_SOURCE_DIR}/Dependencies/GLFW/include  # GLFW 的头文件目录
-)
-
 if(WIN32)
     set(GLFW_LIB64_DIR ${CMAKE_SOURCE_DIR}/Dependencies/GLFW/WIN64/lib-mingw-w64)
     set(GLFW_LIB32_DIR ${CMAKE_SOURCE_DIR}/Dependencies/GLFW/WIN32/lib-mingw-w64)
@@ -26,7 +21,6 @@ if(WIN32)
     endif()
 else()
     set(OpenGL_GL_PREFERENCE GLVND)
-    find_package(glfw3 REQUIRED)
     find_package(OpenGL REQUIRED)
     target_link_libraries(OpenGL PRIVATE glfw OpenGL::OpenGL)
 endif()
