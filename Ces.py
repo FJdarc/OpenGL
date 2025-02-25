@@ -18,7 +18,7 @@ def parse_arguments():
         help="Architecture: 'x64' (default) or 'x86'"
     )
     parser.add_argument(
-        'BuildType', 
+        'BuildType',
         nargs='?',
         default='d',
         choices=['d', 'r'],
