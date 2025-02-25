@@ -45,14 +45,13 @@ def configure_cmake(arch, build_dir, build_type, generator):
             'cmake',
             '-B', build_dir,
             '-S', '.',
+            '-G', generator,
             f'-DEXECUTABLE_OUTPUT_PATH={exec_path}',
             f'-DLIBRARY_OUTPUT_PATH={lib_path}',
             f'-DCMAKE_BUILD_TYPE={build_type}',
+            f'-DCMAKE_C_FLAGS={arch}',
+            f'-DCMAKE_CXX_FLAGS={arch}',
         ]
-    config.append('-G')
-    config.append(generator)
-    config.append(f'-DCMAKE_C_FLAGS={arch}')
-    config.append(f'-DCMAKE_CXX_FLAGS={arch}')
     try:
         subprocess.run(config, check=True)
         print(f"✅ CMake 配置成功 @ {build_dir}")
