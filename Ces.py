@@ -1,8 +1,8 @@
-import argparse
 import os
-import subprocess
 import sys
+import argparse
 import platform
+import subprocess
 
 def parse_arguments():
     """解析命令行参数"""
