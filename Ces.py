@@ -108,8 +108,8 @@ def main():
     else:
         print('Unknown System')
 
-    print(f"🛠️  当前目录: {os.getcwd()}")
-    print(f"🏗️  构建架构: {arch}")
+    print(f"🛠️  工作目录: {os.getcwd()}")
+    print(f"🏗️  构建架构: {args.Architecture}")
     print(f"🔧 构建类型: {build_type}")
     print(f"📁 构建目录: {build_dir}")
     print(f"🚀 目标程序: {program_name}\n")
