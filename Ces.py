@@ -51,8 +51,8 @@ def configure_cmake(arch, build_dir, build_type, generator):
         ]
     config.append('-G')
     config.append(generator)
-    config.append(f'-DCMAKE_CXX_FLAGS={arch}')
     config.append(f'-DCMAKE_C_FLAGS={arch}')
+    config.append(f'-DCMAKE_CXX_FLAGS={arch}')
     try:
         subprocess.run(config, check=True)
         print(f"✅ CMake 配置成功 @ {build_dir}")
@@ -94,7 +94,6 @@ def main():
     build_dir = os.path.join('build', str(args.Architecture) + '-debug' if args.BuildType == 'd' else str(args.Architecture) + '-release')
     program_name = get_program_name(args.ProgramName)
     generator = 'Unix Makefiles'
-
     system = platform.system()
     if system == "Windows":
         print('Windows')
