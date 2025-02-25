@@ -5,16 +5,14 @@
 # 将源代码添加到此项目的可执行文件。
 add_executable (OpenGL "OpenGL.cpp" "OpenGL.h")
 
-if (CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET OpenGL PROPERTY CXX_STANDARD 20)
-endif()
+target_include_directories(OpenGL PRIVATE "${CMAKE_SOURCE_DIR}/vendor/glew/include")
 
 if(WIN32)
-    target_link_libraries(OpenGL PRIVATE glfw opengl32)
+    target_link_libraries(OpenGL PRIVATE glew glfw opengl32)
 else()
     set(OpenGL_GL_PREFERENCE GLVND)
     find_package(OpenGL REQUIRED)
-    target_link_libraries(OpenGL PRIVATE glfw OpenGL::OpenGL)
+    target_link_libraries(OpenGL PRIVATE glew glfw OpenGL::OpenGL)
 endif()
 
 # TODO: 如有需要，请添加测试并安装目标。
