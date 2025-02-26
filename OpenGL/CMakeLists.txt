@@ -10,7 +10,6 @@ target_include_directories(OpenGL PRIVATE "${CMAKE_SOURCE_DIR}/vendor/glew/inclu
 if(WIN32)
     target_link_libraries(OpenGL PRIVATE glew glfw opengl32)
 else()
-    set(OpenGL_GL_PREFERENCE GLVND)
     find_package(OpenGL REQUIRED)
     target_link_libraries(OpenGL PRIVATE glew glfw OpenGL::OpenGL)
 endif()
